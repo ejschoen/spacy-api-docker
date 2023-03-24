@@ -10,3 +10,4 @@ env
 coverage.xml
 .coverage
 frontend/node_modules
+.venv

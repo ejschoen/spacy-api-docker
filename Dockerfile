@@ -1,6 +1,6 @@
-FROM python:3.6
-LABEL maintainer="gontrum@me.com"
-LABEL version="0.2"
+FROM python:3.9
+LABEL maintainer="gontrum@me.com and ejschoen@i2kconnect.com"
+LABEL version="0.3"
 LABEL description="Base image, containing no language models."
 
 # Install the required packages
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
 # Install node for the frontend
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
   apt-get install -y nodejs &&\
   apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 

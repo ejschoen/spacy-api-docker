@@ -1,6 +1,6 @@
 .PHONY: clean start build-and-push test
 
-PYTHON3=python3.6
+PYTHON3=python3.9
 
 all: env/bin/python
 

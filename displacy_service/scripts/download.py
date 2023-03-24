@@ -1,12 +1,18 @@
 import os
+import sys
 import json
 
 from spacy.cli import download
 
 
 def download_models():
-    languages = os.getenv("languages", "en").split()
+    languages = [sys.argv[i] for i in range(1,len(sys.argv))]
+    if len(languages) == 0:
+        languages = os.getenv("languages", "en").split()
+        
+    print(f"Languages: {languages}")
     for lang in languages:
+        print(f"Downloading {lang}")
         download(model=lang, direct=False)
 
     print("Updating frontend settings...")

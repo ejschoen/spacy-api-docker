@@ -1,0 +1,9 @@
+ARG SPACY_BASE=192.168.0.200:5000/jgontrum/spacyapi:3.4-base
+FROM ${SPACY_BASE}
+
+WORKDIR /app
+RUN env/bin/download_models en_core_web_trf en_core_web_lg
+
+ENV PORT 80
+EXPOSE 80
+CMD ["bash", "/app/start.sh"]
