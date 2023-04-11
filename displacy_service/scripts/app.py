@@ -1,15 +1,17 @@
 import os
+import logging
 
 from spacy.symbols import ORTH
 
 from wsgiref import simple_server
 
-from displacy_service.server import APP, MODELS, get_model
+from displacy_service.server import APP, MODELS, get_model, init_logging
 
+logging.getLogger().setLevel(logging.INFO)
 
 def run():
     for model in MODELS:
-        print("Load model ", model)
+        logging.info(f"Load model {model}")
         loaded_model = get_model(model)
         special_cases_str = os.getenv(f"{model}_special_cases", "")
         if special_cases_str:
@@ -19,6 +21,7 @@ def run():
                     [{ORTH: special_case}]
                 )
 
-    print("Loaded all models. Starting HTTP server.")
+    logging.info("Loaded all models. Starting HTTP server.")
+    init_logging()
     httpd = simple_server.make_server('0.0.0.0', 8000, APP)
     httpd.serve_forever()

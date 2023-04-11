@@ -5,16 +5,31 @@ import json
 import os
 
 from spacy.symbols import ENT_TYPE, TAG, DEP
+from spacy.lang.en import English
 import spacy.about
 import spacy.util
+import traceback
 
-from .parse import Parse, Entities, Sentences, SentencesDependencies
+import logging
 
+from .parse import Parse, Entities, Sentences, SentencesDependencies, init_parse_logging
+
+from spacy_experimental.coref.coref_component import DEFAULT_COREF_MODEL
+from spacy_experimental.coref.coref_util import DEFAULT_CLUSTER_PREFIX
 
 MODELS = os.getenv("languages", "").split()
 
 _models = {}
 
+logger = None
+
+def init_logging():
+    global logger
+    logger = logging.getLogger("server")
+    format = '[%(asctime)s] [%(levelname)s] [%(message)s] [--> %(pathname)s [%(process)d]:]'
+    logging.basicConfig(format=format,level=logging.INFO)
+    logger.info("logging initialized")
+    init_parse_logging()
 
 def get_model(model_name):
     if model_name not in _models:
@@ -146,18 +161,24 @@ class EntResource(object):
         json_data = json.loads(req_body.decode('utf8'))
         text = json_data.get('text')
         model_name = json_data.get('model', 'en')
+        resolve_corefs = json_data.get('resolve_corefs', 'False')
+
+        logger.info(f"entity request, resolve_corefs={resolve_corefs}")
+
         try:
             model = get_model(model_name)
-            entities = Entities(model, text)
+            entities = Entities(model, text, resolve_corefs=resolve_corefs)
             resp.body = json.dumps(entities.to_json(), sort_keys=True,
                                    indent=2)
             resp.content_type = 'text/string'
             resp.append_header('Access-Control-Allow-Origin', "*")
             resp.status = falcon.HTTP_200
         except Exception as e:
+            traceback.print_exc()
             raise falcon.HTTPBadRequest(
                 'Text parsing failed',
                 '{}'.format(e))
+
 
 
 class SentsResources(object):
