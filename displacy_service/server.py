@@ -161,13 +161,14 @@ class EntResource(object):
         json_data = json.loads(req_body.decode('utf8'))
         text = json_data.get('text')
         model_name = json_data.get('model', 'en')
-        resolve_corefs = json_data.get('resolve_corefs', 'False')
+        collapse_phrases = json_data.get('collapse_phrases', False)
+        resolve_corefs = json_data.get('resolve_corefs', False)
 
         logger.info(f"entity request, resolve_corefs={resolve_corefs}")
 
         try:
             model = get_model(model_name)
-            entities = Entities(model, text, resolve_corefs=resolve_corefs)
+            entities = Entities(model, text, resolve_corefs=resolve_corefs, collapse_phrases=collapse_phrases)
             resp.body = json.dumps(entities.to_json(), sort_keys=True,
                                    indent=2)
             resp.content_type = 'text/string'

@@ -1,5 +1,7 @@
 #import spacy
 import logging
+from coreferee.manager import CorefereeBroker
+from spacy.tokens import Token
 
 logger = None
 
@@ -57,14 +59,34 @@ class Parse(object):
 
 
 class Entities(object):
-    def __init__(self, nlp, text, resolve_corefs=False, unify_entities=True):
+    def __init__(self, nlp, text, resolve_corefs=False, unify_entities=True, collapse_phrases=False):
         self.resolve_corefs = resolve_corefs
         self.unify_entities = unify_entities
-        if resolve_corefs:
+        if resolve_corefs and not collapse_phrases:
             if not nlp.has_pipe("coreferee"):
                 nlp.add_pipe("coreferee")
             self.resolve_corefs = True
         self.doc = nlp(text)
+        if collapse_phrases:
+            if not Token.has_extension("original tokens"):
+                Token.set_extension("original_tokens", default=None, force=True)
+            with self.doc.retokenize() as retokenizer:
+                    for np in list(self.doc.noun_chunks):
+                        ents = np.ents
+                        if len(ents)==1:
+                            if np.start==ents[0].start and np.end==ents[0].end:
+                                print(f"Merging {np}")
+                                retokenizer.merge(np, {"_": {"original_tokens": list([c.text for c in np])}})
+                            else:
+                                if ents[0].end-ents[0].end > 1:
+                                    print(f"Merging entity {ents[0]} inside noun chunk {np}")
+                                    retokenizer.merge(np, {"_", {"original_tokens": list([c.text for c in ents[0]])}})
+                        else:
+                            print(f"Not merging multi-entity noun chunk {np}")
+            if resolve_corefs:
+                self.resolve_corefs = True
+                coreferee = CorefereeBroker(nlp, "")
+                coreferee(self.doc)
         self.unified_entities = {}
 
     def get_clusters(self, ent):
@@ -98,11 +120,19 @@ class Entities(object):
             if clusters is not None:
                 response = response | {'clusters': clusters}
         return response
+
+    def entity_words(self, entity):
+        if Token.has_extension("original_tokens"):
+            return [word for token in entity for word in (token._.original_tokens if token._.original_tokens is not None else [token.text])]
+        else:
+            return [token.text for token in entity]
     
     ''' Having seen Jane Smith as a mult-token entity previously, presume that
         an entity with the name Jane or the name Smith refers to the same
-        entity.  Copy those entities' coreference clusters and those entities
-        themselves into the clusters of Jane Smith.'''
+        entity. (Jane Smith becomes the antecedant of the entities Jane and Smith.)
+        Copy those entities' coreference clusters and those entities
+        themselves into the clusters of Jane Smith. Return a map from each such entity
+        to their antecedant.'''
     def find_matching_entities(self):
         tokens_to_entities = {}
         entity_crossreference = {}
@@ -114,17 +144,23 @@ class Entities(object):
             for tok in entity:
                 token_text = tok.text
                 token_index = tok.idx
+                print(f"entity token: {token_text}")
                 if token_text in tokens_to_entities:
-                    if all(t.text in tokens_to_entities for t in entity):
+                    if all(t in tokens_to_entities for t in self.entity_words(entity)):
+                        print(f"Match? {token_text} => {self.entity_words(entity)}")
                         entity0 = tokens_to_entities[token_text][0]
                         entity0_size = entity0.end - entity0.start
                         if token_index > entity0.start and entity_size <= entity0_size:
                             entity_list = tokens_to_entities[token_text]
                             if entity not in entity_list:
                                 entity_list.append(entity)
+                    else:
+                        print(f"Dropped {token_text} because not all of {self.entity_words(entity)} in tokens_to_entities")
                 else:
-                    for tok1 in entity:
-                        tokens_to_entities[tok1.text] = entity_crossreference[entity]
+                    #print(f"New token? {token_text} => {self.entity_words(entity)}, size {entity.end-entity.start}")
+                    for tok1 in self.entity_words(entity):
+                        print(f"Adding {tok1} for entity {entity}")
+                        tokens_to_entities[tok1] = entity_crossreference[entity]
         entity_map={}
         for entity,entities in entity_crossreference.items():
             if len(entities)>1:
@@ -200,7 +236,7 @@ class SentencesDependencies(object):
     def to_json(self):
         sents = []
         for sent in self.doc.sents:
-            words = [{**{'text': w.text, 'tag': w.tag_, 'pos': w.pos_, 'idx': w.idx}, **({'lemma': w.lemma_} if w.lemma_ != w.text else {})} for w in sent]
+            words = [{**{'text': w.text, 'tag': w.tag_, 'pos': w.pos_, 'idx': w.idx, 't_idx': w.i}, **({'lemma': w.lemma_} if w.lemma_ != w.text else {})} for w in sent]
             arcs = []
             for word in sent:
                 if word.i < word.head.i:
