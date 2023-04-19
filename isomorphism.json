@@ -1,0 +1,167 @@
+{
+  "subgraph": {
+    "arcs": [
+      {
+        "dir": "left",
+        "label": "nsubj",
+        "start": 0,
+        "end": 1
+      },
+      {
+        "dir": "right",
+        "label": "attr",
+        "start": 1,
+        "end": 2
+      }
+    ],
+    "words": [
+      {"pos":  "PROPN", "tag": "NNP"},
+      {"pos" : "AUX", "tag" : "VBZ", "lemma": "be","text" : "is"},
+      {"pos": "PROPN"}
+    ]
+  },
+  "graph" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 1,
+      "label" : "nsubj",
+      "start" : 0,
+      "text" : "Dr. Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 2,
+      "label" : "attr",
+      "start" : 1,
+      "text" : "a Food Safety Advisor"
+    }, {
+      "dir" : "right",
+      "end" : 3,
+      "label" : "prep",
+      "start" : 2,
+      "text" : "with"
+    }, {
+      "dir" : "right",
+      "end" : 4,
+      "label" : "pobj",
+      "start" : 3,
+      "text" : "the Food Safety Division"
+    }, {
+      "dir" : "right",
+      "end" : 5,
+      "label" : "prep",
+      "start" : 4,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 6,
+      "label" : "pobj",
+      "start" : 5,
+      "text" : "the Center"
+    }, {
+      "dir" : "right",
+      "end" : 7,
+      "label" : "prep",
+      "start" : 6,
+      "text" : "for"
+    }, {
+      "dir" : "right",
+      "end" : 8,
+      "label" : "pobj",
+      "start" : 7,
+      "text" : "Nutrition"
+    }, {
+      "dir" : "right",
+      "end" : 9,
+      "label" : "prep",
+      "start" : 6,
+      "text" : "at"
+    }, {
+      "dir" : "right",
+      "end" : 10,
+      "label" : "pobj",
+      "start" : 9,
+      "text" : "USAID"
+    }, {
+      "dir" : "right",
+      "end" : 11,
+      "label" : "punct",
+      "start" : 1,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 0,
+      "pos" : "PROPN",
+      "t_idx" : 0,
+      "tag" : "NNP",
+      "text" : "Dr. Meera Chandra"
+    }, {
+      "idx" : 18,
+      "lemma" : "be",
+      "pos" : "AUX",
+      "t_idx" : 1,
+      "tag" : "VBZ",
+      "text" : "is"
+    }, {
+      "idx" : 21,
+      "pos" : "PROPN",
+      "t_idx" : 2,
+      "tag" : "NNP",
+      "text" : "a Food Safety Advisor"
+    }, {
+      "idx" : 43,
+      "pos" : "ADP",
+      "t_idx" : 3,
+      "tag" : "IN",
+      "text" : "with"
+    }, {
+      "idx" : 48,
+      "pos" : "PROPN",
+      "t_idx" : 4,
+      "tag" : "NNP",
+      "text" : "the Food Safety Division"
+    }, {
+      "idx" : 73,
+      "pos" : "ADP",
+      "t_idx" : 5,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 76,
+      "pos" : "PROPN",
+      "t_idx" : 6,
+      "tag" : "NNP",
+      "text" : "the Center"
+    }, {
+      "idx" : 87,
+      "pos" : "ADP",
+      "t_idx" : 7,
+      "tag" : "IN",
+      "text" : "for"
+    }, {
+      "idx" : 91,
+      "pos" : "PROPN",
+      "t_idx" : 8,
+      "tag" : "NNP",
+      "text" : "Nutrition"
+    }, {
+      "idx" : 101,
+      "pos" : "ADP",
+      "t_idx" : 9,
+      "tag" : "IN",
+      "text" : "at"
+    }, {
+      "idx" : 104,
+      "pos" : "PROPN",
+      "t_idx" : 10,
+      "tag" : "NNP",
+      "text" : "USAID"
+    }, {
+      "idx" : 109,
+      "pos" : "PUNCT",
+      "t_idx" : 11,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Dr. Meera Chandra is a Food Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID."
+}

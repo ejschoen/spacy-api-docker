@@ -13,6 +13,7 @@ import traceback
 import logging
 
 from .parse import Parse, Entities, Sentences, SentencesDependencies, init_parse_logging
+from .graph import GraphTestResource, SubgraphIsomorphismResource, init_graph_logging
 
 from spacy_experimental.coref.coref_component import DEFAULT_COREF_MODEL
 from spacy_experimental.coref.coref_util import DEFAULT_CLUSTER_PREFIX
@@ -30,6 +31,7 @@ def init_logging():
     logging.basicConfig(format=format,level=logging.INFO)
     logger.info("logging initialized")
     init_parse_logging()
+    init_graph_logging()
 
 def get_model(model_name):
     if model_name not in _models:
@@ -218,6 +220,9 @@ class SentsDepResources(object):
 
         try:
             model = get_model(model_name)
+            if "merge_ners" not in model.pipe_names:
+                model.add_pipe("merge_ners", last=True)
+                model.add_pipe("parser", "reparser", last=True, source=model)
             sentences = SentencesDependencies(model,
                                               text,
                                               collapse_punctuation=collapse_punctuation,
@@ -243,3 +248,6 @@ APP.add_route('/sents_dep', SentsDepResources())
 APP.add_route('/{model_name}/schema', SchemaResource())
 APP.add_route('/models', ModelsResource())
 APP.add_route('/version', VersionResource())
+APP.add_route('/graphs', GraphTestResource())
+APP.add_route('/subgraph', SubgraphIsomorphismResource())
+

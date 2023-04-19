@@ -2,6 +2,7 @@
 import logging
 from coreferee.manager import CorefereeBroker
 from spacy.tokens import Token
+from spacy.language import Language
 
 logger = None
 
@@ -9,7 +10,15 @@ def init_parse_logging():
     global logger
     logger = logging.getLogger("parse")
     logger.info("logging initialized")
-    
+
+@Language.component("merge_ners")
+def merge_ners(doc):
+    ents = doc.ents
+    with doc.retokenize() as retokenizer:
+        for ent in ents:
+            retokenizer.merge(ent)
+    return doc
+
 class Parse(object):
     def __init__(self, nlp, text, collapse_punctuation, collapse_phrases):
         self.doc = nlp(text)
@@ -210,9 +219,19 @@ class Sentences(object):
 
 class SentencesDependencies(object):
     def __init__(self, nlp, text, collapse_punctuation, collapse_phrases):
+        if collapse_phrases is True:
+            nlp.disable_pipe("merge_ners")
+            nlp.disable_pipe("reparser")
+        elif collapse_phrases is False:
+            nlp.disable_pipe("merge_ners")
+            nlp.disable_pipe("reparser")
+        elif collapse_phrases == "Entities":
+            nlp.enable_pipe("merge_ners")
+            nlp.enable_pipe("reparser")
+
         self.doc = nlp(text)
 
-        if collapse_punctuation:
+        if collapse_punctuation is True:
             with self.doc.retokenize() as retokenizer:
                 spans = []
                 for word in self.doc[:-1]:

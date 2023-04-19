@@ -1,0 +1,1225 @@
+[ {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 1,
+      "label" : "nsubj",
+      "start" : 0,
+      "text" : "Dr. Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 2,
+      "label" : "attr",
+      "start" : 1,
+      "text" : "a Food Safety Advisor"
+    }, {
+      "dir" : "right",
+      "end" : 3,
+      "label" : "prep",
+      "start" : 2,
+      "text" : "with"
+    }, {
+      "dir" : "right",
+      "end" : 4,
+      "label" : "pobj",
+      "start" : 3,
+      "text" : "the Food Safety Division"
+    }, {
+      "dir" : "right",
+      "end" : 5,
+      "label" : "prep",
+      "start" : 4,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 6,
+      "label" : "pobj",
+      "start" : 5,
+      "text" : "the Center"
+    }, {
+      "dir" : "right",
+      "end" : 7,
+      "label" : "prep",
+      "start" : 6,
+      "text" : "for"
+    }, {
+      "dir" : "right",
+      "end" : 8,
+      "label" : "pobj",
+      "start" : 7,
+      "text" : "Nutrition"
+    }, {
+      "dir" : "right",
+      "end" : 9,
+      "label" : "prep",
+      "start" : 6,
+      "text" : "at"
+    }, {
+      "dir" : "right",
+      "end" : 10,
+      "label" : "pobj",
+      "start" : 9,
+      "text" : "USAID"
+    }, {
+      "dir" : "right",
+      "end" : 11,
+      "label" : "punct",
+      "start" : 1,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 0,
+      "pos" : "PROPN",
+      "t_idx" : 0,
+      "tag" : "NNP",
+      "text" : "Dr. Meera Chandra"
+    }, {
+      "idx" : 18,
+      "lemma" : "be",
+      "pos" : "AUX",
+      "t_idx" : 1,
+      "tag" : "VBZ",
+      "text" : "is"
+    }, {
+      "idx" : 21,
+      "pos" : "PROPN",
+      "t_idx" : 2,
+      "tag" : "NNP",
+      "text" : "a Food Safety Advisor"
+    }, {
+      "idx" : 43,
+      "pos" : "ADP",
+      "t_idx" : 3,
+      "tag" : "IN",
+      "text" : "with"
+    }, {
+      "idx" : 48,
+      "pos" : "PROPN",
+      "t_idx" : 4,
+      "tag" : "NNP",
+      "text" : "the Food Safety Division"
+    }, {
+      "idx" : 73,
+      "pos" : "ADP",
+      "t_idx" : 5,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 76,
+      "pos" : "PROPN",
+      "t_idx" : 6,
+      "tag" : "NNP",
+      "text" : "the Center"
+    }, {
+      "idx" : 87,
+      "pos" : "ADP",
+      "t_idx" : 7,
+      "tag" : "IN",
+      "text" : "for"
+    }, {
+      "idx" : 91,
+      "pos" : "PROPN",
+      "t_idx" : 8,
+      "tag" : "NNP",
+      "text" : "Nutrition"
+    }, {
+      "idx" : 101,
+      "pos" : "ADP",
+      "t_idx" : 9,
+      "tag" : "IN",
+      "text" : "at"
+    }, {
+      "idx" : 104,
+      "pos" : "PROPN",
+      "t_idx" : 10,
+      "tag" : "NNP",
+      "text" : "USAID"
+    }, {
+      "idx" : 109,
+      "pos" : "PUNCT",
+      "t_idx" : 11,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Dr. Meera Chandra is a Food Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID."
+}, {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 13,
+      "label" : "nsubj",
+      "start" : 12,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 14,
+      "label" : "attr",
+      "start" : 13,
+      "text" : "a veterinarian"
+    }, {
+      "dir" : "right",
+      "end" : 15,
+      "label" : "prep",
+      "start" : 13,
+      "text" : "by"
+    }, {
+      "dir" : "right",
+      "end" : 16,
+      "label" : "pobj",
+      "start" : 15,
+      "text" : "training"
+    }, {
+      "dir" : "right",
+      "end" : 17,
+      "label" : "cc",
+      "start" : 13,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 18,
+      "label" : "conj",
+      "start" : 13,
+      "text" : "received"
+    }, {
+      "dir" : "right",
+      "end" : 19,
+      "label" : "dobj",
+      "start" : 18,
+      "text" : "Meera Chandra's Doctorate"
+    }, {
+      "dir" : "right",
+      "end" : 20,
+      "label" : "prep",
+      "start" : 19,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 21,
+      "label" : "pobj",
+      "start" : 20,
+      "text" : "Veterinary Medicine"
+    }, {
+      "dir" : "right",
+      "end" : 22,
+      "label" : "cc",
+      "start" : 19,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 23,
+      "label" : "conj",
+      "start" : 19,
+      "text" : "Master"
+    }, {
+      "dir" : "right",
+      "end" : 24,
+      "label" : "prep",
+      "start" : 23,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 25,
+      "label" : "pobj",
+      "start" : 24,
+      "text" : "Public Health"
+    }, {
+      "dir" : "right",
+      "end" : 26,
+      "label" : "prep",
+      "start" : 18,
+      "text" : "from"
+    }, {
+      "dir" : "right",
+      "end" : 27,
+      "label" : "pobj",
+      "start" : 26,
+      "text" : "the University"
+    }, {
+      "dir" : "right",
+      "end" : 28,
+      "label" : "prep",
+      "start" : 27,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 29,
+      "label" : "pobj",
+      "start" : 28,
+      "text" : "Florida"
+    }, {
+      "dir" : "right",
+      "end" : 30,
+      "label" : "punct",
+      "start" : 13,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 111,
+      "pos" : "PROPN",
+      "t_idx" : 12,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 125,
+      "lemma" : "be",
+      "pos" : "AUX",
+      "t_idx" : 13,
+      "tag" : "VBZ",
+      "text" : "is"
+    }, {
+      "idx" : 128,
+      "pos" : "NOUN",
+      "t_idx" : 14,
+      "tag" : "NN",
+      "text" : "a veterinarian"
+    }, {
+      "idx" : 143,
+      "pos" : "ADP",
+      "t_idx" : 15,
+      "tag" : "IN",
+      "text" : "by"
+    }, {
+      "idx" : 146,
+      "pos" : "NOUN",
+      "t_idx" : 16,
+      "tag" : "NN",
+      "text" : "training"
+    }, {
+      "idx" : 155,
+      "pos" : "CCONJ",
+      "t_idx" : 17,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 159,
+      "lemma" : "receive",
+      "pos" : "VERB",
+      "t_idx" : 18,
+      "tag" : "VBD",
+      "text" : "received"
+    }, {
+      "idx" : 168,
+      "pos" : "PROPN",
+      "t_idx" : 19,
+      "tag" : "NNP",
+      "text" : "Meera Chandra's Doctorate"
+    }, {
+      "idx" : 194,
+      "pos" : "ADP",
+      "t_idx" : 20,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 197,
+      "pos" : "PROPN",
+      "t_idx" : 21,
+      "tag" : "NNP",
+      "text" : "Veterinary Medicine"
+    }, {
+      "idx" : 217,
+      "pos" : "CCONJ",
+      "t_idx" : 22,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 221,
+      "pos" : "PROPN",
+      "t_idx" : 23,
+      "tag" : "NNP",
+      "text" : "Master"
+    }, {
+      "idx" : 228,
+      "pos" : "ADP",
+      "t_idx" : 24,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 231,
+      "pos" : "PROPN",
+      "t_idx" : 25,
+      "tag" : "NNP",
+      "text" : "Public Health"
+    }, {
+      "idx" : 245,
+      "pos" : "ADP",
+      "t_idx" : 26,
+      "tag" : "IN",
+      "text" : "from"
+    }, {
+      "idx" : 250,
+      "pos" : "PROPN",
+      "t_idx" : 27,
+      "tag" : "NNP",
+      "text" : "the University"
+    }, {
+      "idx" : 265,
+      "pos" : "ADP",
+      "t_idx" : 28,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 268,
+      "pos" : "PROPN",
+      "t_idx" : 29,
+      "tag" : "NNP",
+      "text" : "Florida"
+    }, {
+      "idx" : 275,
+      "pos" : "PUNCT",
+      "t_idx" : 30,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Meera Chandra is a veterinarian by training and received Meera Chandra's Doctorate in Veterinary Medicine and Master of Public Health from the University of Florida."
+}, {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "advmod",
+      "start" : 31,
+      "text" : "Prior"
+    }, {
+      "dir" : "right",
+      "end" : 32,
+      "label" : "prep",
+      "start" : 31,
+      "text" : "to"
+    }, {
+      "dir" : "right",
+      "end" : 33,
+      "label" : "pcomp",
+      "start" : 32,
+      "text" : "joining"
+    }, {
+      "dir" : "right",
+      "end" : 34,
+      "label" : "dobj",
+      "start" : 33,
+      "text" : "USAID"
+    }, {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "punct",
+      "start" : 35,
+      "text" : ","
+    }, {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "nsubj",
+      "start" : 36,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 38,
+      "label" : "prep",
+      "start" : 37,
+      "text" : "as"
+    }, {
+      "dir" : "right",
+      "end" : 39,
+      "label" : "pobj",
+      "start" : 38,
+      "text" : "an AVMA Congressional Fellow"
+    }, {
+      "dir" : "right",
+      "end" : 40,
+      "label" : "prep",
+      "start" : 39,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 41,
+      "label" : "pobj",
+      "start" : 40,
+      "text" : "the United States Senate"
+    }, {
+      "dir" : "left",
+      "end" : 44,
+      "label" : "advmod",
+      "start" : 42,
+      "text" : "where"
+    }, {
+      "dir" : "left",
+      "end" : 44,
+      "label" : "nsubj",
+      "start" : 43,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 44,
+      "label" : "relcl",
+      "start" : 41,
+      "text" : "advised"
+    }, {
+      "dir" : "right",
+      "end" : 45,
+      "label" : "prep",
+      "start" : 44,
+      "text" : "on"
+    }, {
+      "dir" : "right",
+      "end" : 46,
+      "label" : "pobj",
+      "start" : 45,
+      "text" : "agriculture"
+    }, {
+      "dir" : "right",
+      "end" : 47,
+      "label" : "cc",
+      "start" : 46,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 48,
+      "label" : "conj",
+      "start" : 46,
+      "text" : "public health policy"
+    }, {
+      "dir" : "right",
+      "end" : 49,
+      "label" : "punct",
+      "start" : 37,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 277,
+      "lemma" : "prior",
+      "pos" : "ADV",
+      "t_idx" : 31,
+      "tag" : "RB",
+      "text" : "Prior"
+    }, {
+      "idx" : 283,
+      "pos" : "ADP",
+      "t_idx" : 32,
+      "tag" : "IN",
+      "text" : "to"
+    }, {
+      "idx" : 286,
+      "lemma" : "join",
+      "pos" : "VERB",
+      "t_idx" : 33,
+      "tag" : "VBG",
+      "text" : "joining"
+    }, {
+      "idx" : 294,
+      "pos" : "PROPN",
+      "t_idx" : 34,
+      "tag" : "NNP",
+      "text" : "USAID"
+    }, {
+      "idx" : 299,
+      "pos" : "PUNCT",
+      "t_idx" : 35,
+      "tag" : ",",
+      "text" : ","
+    }, {
+      "idx" : 301,
+      "pos" : "PROPN",
+      "t_idx" : 36,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 315,
+      "lemma" : "serve",
+      "pos" : "VERB",
+      "t_idx" : 37,
+      "tag" : "VBD",
+      "text" : "served"
+    }, {
+      "idx" : 322,
+      "pos" : "ADP",
+      "t_idx" : 38,
+      "tag" : "IN",
+      "text" : "as"
+    }, {
+      "idx" : 325,
+      "pos" : "PROPN",
+      "t_idx" : 39,
+      "tag" : "NNP",
+      "text" : "an AVMA Congressional Fellow"
+    }, {
+      "idx" : 354,
+      "pos" : "ADP",
+      "t_idx" : 40,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 357,
+      "pos" : "PROPN",
+      "t_idx" : 41,
+      "tag" : "NNP",
+      "text" : "the United States Senate"
+    }, {
+      "idx" : 382,
+      "pos" : "SCONJ",
+      "t_idx" : 42,
+      "tag" : "WRB",
+      "text" : "where"
+    }, {
+      "idx" : 388,
+      "pos" : "PROPN",
+      "t_idx" : 43,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 402,
+      "lemma" : "advise",
+      "pos" : "VERB",
+      "t_idx" : 44,
+      "tag" : "VBD",
+      "text" : "advised"
+    }, {
+      "idx" : 410,
+      "pos" : "ADP",
+      "t_idx" : 45,
+      "tag" : "IN",
+      "text" : "on"
+    }, {
+      "idx" : 413,
+      "pos" : "NOUN",
+      "t_idx" : 46,
+      "tag" : "NN",
+      "text" : "agriculture"
+    }, {
+      "idx" : 425,
+      "pos" : "CCONJ",
+      "t_idx" : 47,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 429,
+      "pos" : "NOUN",
+      "t_idx" : 48,
+      "tag" : "NN",
+      "text" : "public health policy"
+    }, {
+      "idx" : 449,
+      "pos" : "PUNCT",
+      "t_idx" : 49,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Prior to joining USAID, Meera Chandra served as an AVMA Congressional Fellow in the United States Senate where Meera Chandra advised on agriculture and public health policy."
+}, {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 51,
+      "label" : "nsubj",
+      "start" : 50,
+      "text" : "Meera Chandra's previous experience"
+    }, {
+      "dir" : "right",
+      "end" : 52,
+      "label" : "xcomp",
+      "start" : 51,
+      "text" : "working"
+    }, {
+      "dir" : "right",
+      "end" : 53,
+      "label" : "prep",
+      "start" : 52,
+      "text" : "with"
+    }, {
+      "dir" : "right",
+      "end" : 54,
+      "label" : "pobj",
+      "start" : 53,
+      "text" : "the Department"
+    }, {
+      "dir" : "right",
+      "end" : 55,
+      "label" : "prep",
+      "start" : 54,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 56,
+      "label" : "pobj",
+      "start" : 55,
+      "text" : "Homeland Security"
+    }, {
+      "dir" : "right",
+      "end" : 57,
+      "label" : "advcl",
+      "start" : 52,
+      "text" : "analyzing"
+    }, {
+      "dir" : "right",
+      "end" : 58,
+      "label" : "dobj",
+      "start" : 57,
+      "text" : "the risk"
+    }, {
+      "dir" : "right",
+      "end" : 59,
+      "label" : "prep",
+      "start" : 58,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 60,
+      "label" : "pobj",
+      "start" : 59,
+      "text" : "vector borne disease"
+    }, {
+      "dir" : "right",
+      "end" : 61,
+      "label" : "prep",
+      "start" : 60,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 62,
+      "label" : "pobj",
+      "start" : 61,
+      "text" : "Customs and Border Patrol agents"
+    }, {
+      "dir" : "right",
+      "end" : 63,
+      "label" : "cc",
+      "start" : 62,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 64,
+      "label" : "conj",
+      "start" : 62,
+      "text" : "working canines"
+    }, {
+      "dir" : "right",
+      "end" : 65,
+      "label" : "punct",
+      "start" : 51,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 451,
+      "pos" : "NOUN",
+      "t_idx" : 50,
+      "tag" : "NN",
+      "text" : "Meera Chandra's previous experience"
+    }, {
+      "idx" : 487,
+      "lemma" : "include",
+      "pos" : "VERB",
+      "t_idx" : 51,
+      "tag" : "VBZ",
+      "text" : "includes"
+    }, {
+      "idx" : 496,
+      "lemma" : "work",
+      "pos" : "VERB",
+      "t_idx" : 52,
+      "tag" : "VBG",
+      "text" : "working"
+    }, {
+      "idx" : 504,
+      "pos" : "ADP",
+      "t_idx" : 53,
+      "tag" : "IN",
+      "text" : "with"
+    }, {
+      "idx" : 509,
+      "pos" : "PROPN",
+      "t_idx" : 54,
+      "tag" : "NNP",
+      "text" : "the Department"
+    }, {
+      "idx" : 524,
+      "pos" : "ADP",
+      "t_idx" : 55,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 527,
+      "pos" : "PROPN",
+      "t_idx" : 56,
+      "tag" : "NNP",
+      "text" : "Homeland Security"
+    }, {
+      "idx" : 545,
+      "lemma" : "analyze",
+      "pos" : "VERB",
+      "t_idx" : 57,
+      "tag" : "VBG",
+      "text" : "analyzing"
+    }, {
+      "idx" : 555,
+      "pos" : "NOUN",
+      "t_idx" : 58,
+      "tag" : "NN",
+      "text" : "the risk"
+    }, {
+      "idx" : 564,
+      "pos" : "ADP",
+      "t_idx" : 59,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 567,
+      "lemma" : "vector bear disease",
+      "pos" : "NOUN",
+      "t_idx" : 60,
+      "tag" : "NN",
+      "text" : "vector borne disease"
+    }, {
+      "idx" : 588,
+      "pos" : "ADP",
+      "t_idx" : 61,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 591,
+      "lemma" : "Customs and Border Patrol agent",
+      "pos" : "NOUN",
+      "t_idx" : 62,
+      "tag" : "NNS",
+      "text" : "Customs and Border Patrol agents"
+    }, {
+      "idx" : 624,
+      "pos" : "CCONJ",
+      "t_idx" : 63,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 628,
+      "lemma" : "work canine",
+      "pos" : "NOUN",
+      "t_idx" : 64,
+      "tag" : "NNS",
+      "text" : "working canines"
+    }, {
+      "idx" : 643,
+      "pos" : "PUNCT",
+      "t_idx" : 65,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Meera Chandra's previous experience includes working with the Department of Homeland Security analyzing the risk of vector borne disease in Customs and Border Patrol agents and working canines."
+}, {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 69,
+      "label" : "nsubj",
+      "start" : 66,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "left",
+      "end" : 69,
+      "label" : "aux",
+      "start" : 67,
+      "text" : "has"
+    }, {
+      "dir" : "left",
+      "end" : 69,
+      "label" : "advmod",
+      "start" : 68,
+      "text" : "also"
+    }, {
+      "dir" : "right",
+      "end" : 70,
+      "label" : "prep",
+      "start" : 69,
+      "text" : "with"
+    }, {
+      "dir" : "right",
+      "end" : 71,
+      "label" : "pobj",
+      "start" : 70,
+      "text" : "the World Customs"
+    }, {
+      "dir" : "right",
+      "end" : 72,
+      "label" : "prep",
+      "start" : 71,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 73,
+      "label" : "pobj",
+      "start" : 72,
+      "text" : "Animal Health"
+    }, {
+      "dir" : "right",
+      "end" : 74,
+      "label" : "prep",
+      "start" : 71,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 75,
+      "label" : "pobj",
+      "start" : 74,
+      "text" : "Paris"
+    }, {
+      "dir" : "left",
+      "end" : 78,
+      "label" : "advmod",
+      "start" : 76,
+      "text" : "where"
+    }, {
+      "dir" : "left",
+      "end" : 78,
+      "label" : "nsubj",
+      "start" : 77,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 78,
+      "label" : "advcl",
+      "start" : 69,
+      "text" : "analyzed"
+    }, {
+      "dir" : "right",
+      "end" : 79,
+      "label" : "dobj",
+      "start" : 78,
+      "text" : "risk factors"
+    }, {
+      "dir" : "right",
+      "end" : 80,
+      "label" : "cc",
+      "start" : 79,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 81,
+      "label" : "conj",
+      "start" : 79,
+      "text" : "response efforts"
+    }, {
+      "dir" : "right",
+      "end" : 82,
+      "label" : "prep",
+      "start" : 79,
+      "text" : "to"
+    }, {
+      "dir" : "right",
+      "end" : 83,
+      "label" : "pobj",
+      "start" : 82,
+      "text" : "outbreaks"
+    }, {
+      "dir" : "right",
+      "end" : 84,
+      "label" : "prep",
+      "start" : 83,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 85,
+      "label" : "pobj",
+      "start" : 84,
+      "text" : "Foot and Mouth Disease"
+    }, {
+      "dir" : "right",
+      "end" : 86,
+      "label" : "prep",
+      "start" : 83,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 87,
+      "label" : "pobj",
+      "start" : 86,
+      "text" : "food animals"
+    }, {
+      "dir" : "right",
+      "end" : 88,
+      "label" : "punct",
+      "start" : 69,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 645,
+      "pos" : "PROPN",
+      "t_idx" : 66,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 659,
+      "lemma" : "have",
+      "pos" : "AUX",
+      "t_idx" : 67,
+      "tag" : "VBZ",
+      "text" : "has"
+    }, {
+      "idx" : 663,
+      "pos" : "ADV",
+      "t_idx" : 68,
+      "tag" : "RB",
+      "text" : "also"
+    }, {
+      "idx" : 668,
+      "lemma" : "work",
+      "pos" : "VERB",
+      "t_idx" : 69,
+      "tag" : "VBN",
+      "text" : "worked"
+    }, {
+      "idx" : 675,
+      "pos" : "ADP",
+      "t_idx" : 70,
+      "tag" : "IN",
+      "text" : "with"
+    }, {
+      "idx" : 680,
+      "pos" : "PROPN",
+      "t_idx" : 71,
+      "tag" : "NNP",
+      "text" : "the World Customs"
+    }, {
+      "idx" : 698,
+      "pos" : "ADP",
+      "t_idx" : 72,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 701,
+      "pos" : "PROPN",
+      "t_idx" : 73,
+      "tag" : "NNP",
+      "text" : "Animal Health"
+    }, {
+      "idx" : 715,
+      "pos" : "ADP",
+      "t_idx" : 74,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 718,
+      "pos" : "PROPN",
+      "t_idx" : 75,
+      "tag" : "NNP",
+      "text" : "Paris"
+    }, {
+      "idx" : 724,
+      "pos" : "SCONJ",
+      "t_idx" : 76,
+      "tag" : "WRB",
+      "text" : "where"
+    }, {
+      "idx" : 730,
+      "pos" : "PROPN",
+      "t_idx" : 77,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 744,
+      "lemma" : "analyze",
+      "pos" : "VERB",
+      "t_idx" : 78,
+      "tag" : "VBD",
+      "text" : "analyzed"
+    }, {
+      "idx" : 753,
+      "lemma" : "risk factor",
+      "pos" : "NOUN",
+      "t_idx" : 79,
+      "tag" : "NNS",
+      "text" : "risk factors"
+    }, {
+      "idx" : 766,
+      "pos" : "CCONJ",
+      "t_idx" : 80,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 770,
+      "lemma" : "response effort",
+      "pos" : "NOUN",
+      "t_idx" : 81,
+      "tag" : "NNS",
+      "text" : "response efforts"
+    }, {
+      "idx" : 787,
+      "pos" : "ADP",
+      "t_idx" : 82,
+      "tag" : "IN",
+      "text" : "to"
+    }, {
+      "idx" : 790,
+      "lemma" : "outbreak",
+      "pos" : "NOUN",
+      "t_idx" : 83,
+      "tag" : "NNS",
+      "text" : "outbreaks"
+    }, {
+      "idx" : 800,
+      "pos" : "ADP",
+      "t_idx" : 84,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 803,
+      "pos" : "PROPN",
+      "t_idx" : 85,
+      "tag" : "NNP",
+      "text" : "Foot and Mouth Disease"
+    }, {
+      "idx" : 826,
+      "pos" : "ADP",
+      "t_idx" : 86,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 829,
+      "lemma" : "food animal",
+      "pos" : "NOUN",
+      "t_idx" : 87,
+      "tag" : "NNS",
+      "text" : "food animals"
+    }, {
+      "idx" : 841,
+      "pos" : "PUNCT",
+      "t_idx" : 88,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals."
+}, {
+  "dep_parse" : {
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 90,
+      "label" : "nsubj",
+      "start" : 89,
+      "text" : "Meera Chandra's interests"
+    }, {
+      "dir" : "right",
+      "end" : 91,
+      "label" : "dobj",
+      "start" : 90,
+      "text" : "One Health"
+    }, {
+      "dir" : "right",
+      "end" : 92,
+      "label" : "punct",
+      "start" : 91,
+      "text" : ","
+    }, {
+      "dir" : "right",
+      "end" : 93,
+      "label" : "conj",
+      "start" : 91,
+      "text" : "food safety"
+    }, {
+      "dir" : "right",
+      "end" : 94,
+      "label" : "punct",
+      "start" : 93,
+      "text" : ","
+    }, {
+      "dir" : "right",
+      "end" : 95,
+      "label" : "conj",
+      "start" : 93,
+      "text" : "animal source foods"
+    }, {
+      "dir" : "right",
+      "end" : 96,
+      "label" : "punct",
+      "start" : 95,
+      "text" : ","
+    }, {
+      "dir" : "right",
+      "end" : 97,
+      "label" : "cc",
+      "start" : 95,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 98,
+      "label" : "conj",
+      "start" : 95,
+      "text" : "emerging zoonotic and vector borne diseases"
+    }, {
+      "dir" : "right",
+      "end" : 99,
+      "label" : "punct",
+      "start" : 90,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 843,
+      "lemma" : "Meera Chandra's interest",
+      "pos" : "NOUN",
+      "t_idx" : 89,
+      "tag" : "NNS",
+      "text" : "Meera Chandra's interests"
+    }, {
+      "idx" : 869,
+      "pos" : "VERB",
+      "t_idx" : 90,
+      "tag" : "VBP",
+      "text" : "include"
+    }, {
+      "idx" : 877,
+      "lemma" : "one Health",
+      "pos" : "PROPN",
+      "t_idx" : 91,
+      "tag" : "NNP",
+      "text" : "One Health"
+    }, {
+      "idx" : 887,
+      "pos" : "PUNCT",
+      "t_idx" : 92,
+      "tag" : ",",
+      "text" : ","
+    }, {
+      "idx" : 889,
+      "pos" : "NOUN",
+      "t_idx" : 93,
+      "tag" : "NN",
+      "text" : "food safety"
+    }, {
+      "idx" : 900,
+      "pos" : "PUNCT",
+      "t_idx" : 94,
+      "tag" : ",",
+      "text" : ","
+    }, {
+      "idx" : 902,
+      "lemma" : "animal source food",
+      "pos" : "NOUN",
+      "t_idx" : 95,
+      "tag" : "NNS",
+      "text" : "animal source foods"
+    }, {
+      "idx" : 921,
+      "pos" : "PUNCT",
+      "t_idx" : 96,
+      "tag" : ",",
+      "text" : ","
+    }, {
+      "idx" : 923,
+      "pos" : "CCONJ",
+      "t_idx" : 97,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 927,
+      "lemma" : "emerge zoonotic and vector bear disease",
+      "pos" : "NOUN",
+      "t_idx" : 98,
+      "tag" : "NNS",
+      "text" : "emerging zoonotic and vector borne diseases"
+    }, {
+      "idx" : 970,
+      "pos" : "PUNCT",
+      "t_idx" : 99,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  },
+  "sentence" : "Meera Chandra's interests include One Health, food safety, animal source foods, and emerging zoonotic and vector borne diseases."
+} ]
