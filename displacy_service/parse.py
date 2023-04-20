@@ -219,6 +219,7 @@ class Sentences(object):
 
 class SentencesDependencies(object):
     def __init__(self, nlp, text, collapse_punctuation, collapse_phrases):
+        '''
         if collapse_phrases is True:
             nlp.disable_pipe("merge_ners")
             nlp.disable_pipe("reparser")
@@ -228,10 +229,11 @@ class SentencesDependencies(object):
         elif collapse_phrases == "Entities":
             nlp.enable_pipe("merge_ners")
             nlp.enable_pipe("reparser")
+        '''
 
         self.doc = nlp(text)
 
-        if collapse_punctuation is True:
+        if collapse_punctuation:
             with self.doc.retokenize() as retokenizer:
                 spans = []
                 for word in self.doc[:-1]:
@@ -246,7 +248,7 @@ class SentencesDependencies(object):
                     span = self.doc[start: end]
                     retokenizer.merge(span)
                     
-        if collapse_phrases:
+        if collapse_phrases is True:
             with self.doc.retokenize() as retokenizer:
                 for np in list(self.doc.noun_chunks):
                     retokenizer.merge(np)

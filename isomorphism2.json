@@ -1,0 +1,228 @@
+{
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 13,
+      "label" : "nsubj",
+      "start" : 12,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 14,
+      "label" : "attr",
+      "start" : 13,
+      "text" : "a veterinarian"
+    }, {
+      "dir" : "right",
+      "end" : 15,
+      "label" : "prep",
+      "start" : 13,
+      "text" : "by"
+    }, {
+      "dir" : "right",
+      "end" : 16,
+      "label" : "pobj",
+      "start" : 15,
+      "text" : "training"
+    }, {
+      "dir" : "right",
+      "end" : 17,
+      "label" : "cc",
+      "start" : 13,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 18,
+      "label" : "conj",
+      "start" : 13,
+      "text" : "received"
+    }, {
+      "dir" : "right",
+      "end" : 19,
+      "label" : "dobj",
+      "start" : 18,
+      "text" : "Meera Chandra's Doctorate"
+    }, {
+      "dir" : "right",
+      "end" : 20,
+      "label" : "prep",
+      "start" : 19,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 21,
+      "label" : "pobj",
+      "start" : 20,
+      "text" : "Veterinary Medicine"
+    }, {
+      "dir" : "right",
+      "end" : 22,
+      "label" : "cc",
+      "start" : 19,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 23,
+      "label" : "conj",
+      "start" : 19,
+      "text" : "Master"
+    }, {
+      "dir" : "right",
+      "end" : 24,
+      "label" : "prep",
+      "start" : 23,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 25,
+      "label" : "pobj",
+      "start" : 24,
+      "text" : "Public Health"
+    }, {
+      "dir" : "right",
+      "end" : 26,
+      "label" : "prep",
+      "start" : 18,
+      "text" : "from"
+    }, {
+      "dir" : "right",
+      "end" : 27,
+      "label" : "pobj",
+      "start" : 26,
+      "text" : "the University"
+    }, {
+      "dir" : "right",
+      "end" : 28,
+      "label" : "prep",
+      "start" : 27,
+      "text" : "of"
+    }, {
+      "dir" : "right",
+      "end" : 29,
+      "label" : "pobj",
+      "start" : 28,
+      "text" : "Florida"
+    }, {
+      "dir" : "right",
+      "end" : 30,
+      "label" : "punct",
+      "start" : 13,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 111,
+      "pos" : "PROPN",
+      "t_idx" : 12,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 125,
+      "lemma" : "be",
+      "pos" : "AUX",
+      "t_idx" : 13,
+      "tag" : "VBZ",
+      "text" : "is"
+    }, {
+      "idx" : 128,
+      "pos" : "NOUN",
+      "t_idx" : 14,
+      "tag" : "NN",
+      "text" : "a veterinarian"
+    }, {
+      "idx" : 143,
+      "pos" : "ADP",
+      "t_idx" : 15,
+      "tag" : "IN",
+      "text" : "by"
+    }, {
+      "idx" : 146,
+      "pos" : "NOUN",
+      "t_idx" : 16,
+      "tag" : "NN",
+      "text" : "training"
+    }, {
+      "idx" : 155,
+      "pos" : "CCONJ",
+      "t_idx" : 17,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 159,
+      "lemma" : "receive",
+      "pos" : "VERB",
+      "t_idx" : 18,
+      "tag" : "VBD",
+      "text" : "received"
+    }, {
+      "idx" : 168,
+      "pos" : "PROPN",
+      "t_idx" : 19,
+      "tag" : "NNP",
+      "text" : "Meera Chandra's Doctorate"
+    }, {
+      "idx" : 194,
+      "pos" : "ADP",
+      "t_idx" : 20,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 197,
+      "pos" : "PROPN",
+      "t_idx" : 21,
+      "tag" : "NNP",
+      "text" : "Veterinary Medicine"
+    }, {
+      "idx" : 217,
+      "pos" : "CCONJ",
+      "t_idx" : 22,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 221,
+      "pos" : "PROPN",
+      "t_idx" : 23,
+      "tag" : "NNP",
+      "text" : "Master"
+    }, {
+      "idx" : 228,
+      "pos" : "ADP",
+      "t_idx" : 24,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 231,
+      "pos" : "PROPN",
+      "t_idx" : 25,
+      "tag" : "NNP",
+      "text" : "Public Health"
+    }, {
+      "idx" : 245,
+      "pos" : "ADP",
+      "t_idx" : 26,
+      "tag" : "IN",
+      "text" : "from"
+    }, {
+      "idx" : 250,
+      "pos" : "PROPN",
+      "t_idx" : 27,
+      "tag" : "NNP",
+      "text" : "the University"
+    }, {
+      "idx" : 265,
+      "pos" : "ADP",
+      "t_idx" : 28,
+      "tag" : "IN",
+      "text" : "of"
+    }, {
+      "idx" : 268,
+      "pos" : "PROPN",
+      "t_idx" : 29,
+      "tag" : "NNP",
+      "text" : "Florida"
+    }, {
+      "idx" : 275,
+      "pos" : "PUNCT",
+      "t_idx" : 30,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  }

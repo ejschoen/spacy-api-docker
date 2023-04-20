@@ -35,7 +35,8 @@ def init_logging():
 
 def get_model(model_name):
     if model_name not in _models:
-        _models[model_name] = spacy.load(model_name)
+        model = spacy.load(model_name)
+        _models[model_name] = model
     return _models[model_name]
 
 
@@ -220,9 +221,6 @@ class SentsDepResources(object):
 
         try:
             model = get_model(model_name)
-            if "merge_ners" not in model.pipe_names:
-                model.add_pipe("merge_ners", last=True)
-                model.add_pipe("parser", "reparser", last=True, source=model)
             sentences = SentencesDependencies(model,
                                               text,
                                               collapse_punctuation=collapse_punctuation,

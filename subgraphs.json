@@ -1,0 +1,74 @@
+[{"pattern": "is-0",
+  "rdf": [{
+      "subject": {"ref": 0},
+      "predicate": {"value": "is"},
+      "object": {"ref": 2},
+      "context": {"value": "present"}}],
+  "arcs": [
+      {
+          "dir": "left",
+          "label": "nsubj",
+          "start": 0,
+          "end": 1
+      },
+      {
+          "dir": "right",
+          "label": "attr",
+          "start": 1,
+          "end": 2
+      }],
+  "words": [
+      {"pos":  "PROPN", "tag": "NNP"},
+      {"pos" : "AUX", "tag" : "VBZ", "lemma": "be","text" : "is"},
+      {"pos": ["PROPN","NOUN"]}]
+ },
+ {"pattern": "was-0",
+  "rdf": [{"subject": {"ref": 0},
+           "predicate": {"ref": 1, "use": ["lemma","text"]},
+           "object": {"ref": 2},
+           "context": {"value": "past"}}],
+  "arcs": [
+      {
+          "dir": "left",
+          "label": "nsubj",
+          "start": 0,
+          "end": 1
+      },
+      {
+          "dir": "right",
+          "label": "attr",
+          "start": 1,
+          "end": 2
+      }],
+  "words": [{"pos":  "PROPN", "tag": "NNP"},
+            {"tag" : "VBD"},
+            {"pos": ["PROPN","NOUN"]}]},
+ {"pattern": "was-1",
+  "rdf": [{"subject": {"ref": 0},
+           "predicate": {"ref": 1, "use": ["lemma","text"], "stop_at": 1},
+           "object": {"ref": 3, "stop_at": ["relcl"]},
+           "context": {"value": "past"}}],
+  "arcs": [
+      {
+          "dir": "left",
+          "label": "nsubj",
+          "start": 0,
+          "end": 1
+      },
+      {
+          "dir": "right",
+          "label": "prep",
+          "start": 1,
+          "end": 2
+      },
+      { "dir": "right",
+        "label": "pobj",
+        "start": 2,
+        "end": 3
+      }
+  ],
+  "words": [{"pos":  "PROPN", "tag": "NNP"},
+            {"tag" : "VBD"},
+            {"pos": "ADP"},
+            {"pos": ["PROPN","NOUN"]}]}
+]

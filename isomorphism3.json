@@ -1,0 +1,230 @@
+{
+    "arcs" : [ {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "advmod",
+      "start" : 31,
+      "text" : "Prior"
+    }, {
+      "dir" : "right",
+      "end" : 32,
+      "label" : "prep",
+      "start" : 31,
+      "text" : "to"
+    }, {
+      "dir" : "right",
+      "end" : 33,
+      "label" : "pcomp",
+      "start" : 32,
+      "text" : "joining"
+    }, {
+      "dir" : "right",
+      "end" : 34,
+      "label" : "dobj",
+      "start" : 33,
+      "text" : "USAID"
+    }, {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "punct",
+      "start" : 35,
+      "text" : ","
+    }, {
+      "dir" : "left",
+      "end" : 37,
+      "label" : "nsubj",
+      "start" : 36,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 38,
+      "label" : "prep",
+      "start" : 37,
+      "text" : "as"
+    }, {
+      "dir" : "right",
+      "end" : 39,
+      "label" : "pobj",
+      "start" : 38,
+      "text" : "an AVMA Congressional Fellow"
+    }, {
+      "dir" : "right",
+      "end" : 40,
+      "label" : "prep",
+      "start" : 39,
+      "text" : "in"
+    }, {
+      "dir" : "right",
+      "end" : 41,
+      "label" : "pobj",
+      "start" : 40,
+      "text" : "the United States Senate"
+    }, {
+      "dir" : "left",
+      "end" : 44,
+      "label" : "advmod",
+      "start" : 42,
+      "text" : "where"
+    }, {
+      "dir" : "left",
+      "end" : 44,
+      "label" : "nsubj",
+      "start" : 43,
+      "text" : "Meera Chandra"
+    }, {
+      "dir" : "right",
+      "end" : 44,
+      "label" : "relcl",
+      "start" : 41,
+      "text" : "advised"
+    }, {
+      "dir" : "right",
+      "end" : 45,
+      "label" : "prep",
+      "start" : 44,
+      "text" : "on"
+    }, {
+      "dir" : "right",
+      "end" : 46,
+      "label" : "pobj",
+      "start" : 45,
+      "text" : "agriculture"
+    }, {
+      "dir" : "right",
+      "end" : 47,
+      "label" : "cc",
+      "start" : 46,
+      "text" : "and"
+    }, {
+      "dir" : "right",
+      "end" : 48,
+      "label" : "conj",
+      "start" : 46,
+      "text" : "public health policy"
+    }, {
+      "dir" : "right",
+      "end" : 49,
+      "label" : "punct",
+      "start" : 37,
+      "text" : "."
+    } ],
+    "words" : [ {
+      "idx" : 277,
+      "lemma" : "prior",
+      "pos" : "ADV",
+      "t_idx" : 31,
+      "tag" : "RB",
+      "text" : "Prior"
+    }, {
+      "idx" : 283,
+      "pos" : "ADP",
+      "t_idx" : 32,
+      "tag" : "IN",
+      "text" : "to"
+    }, {
+      "idx" : 286,
+      "lemma" : "join",
+      "pos" : "VERB",
+      "t_idx" : 33,
+      "tag" : "VBG",
+      "text" : "joining"
+    }, {
+      "idx" : 294,
+      "pos" : "PROPN",
+      "t_idx" : 34,
+      "tag" : "NNP",
+      "text" : "USAID"
+    }, {
+      "idx" : 299,
+      "pos" : "PUNCT",
+      "t_idx" : 35,
+      "tag" : ",",
+      "text" : ","
+    }, {
+      "idx" : 301,
+      "pos" : "PROPN",
+      "t_idx" : 36,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 315,
+      "lemma" : "serve",
+      "pos" : "VERB",
+      "t_idx" : 37,
+      "tag" : "VBD",
+      "text" : "served"
+    }, {
+      "idx" : 322,
+      "pos" : "ADP",
+      "t_idx" : 38,
+      "tag" : "IN",
+      "text" : "as"
+    }, {
+      "idx" : 325,
+      "pos" : "PROPN",
+      "t_idx" : 39,
+      "tag" : "NNP",
+      "text" : "an AVMA Congressional Fellow"
+    }, {
+      "idx" : 354,
+      "pos" : "ADP",
+      "t_idx" : 40,
+      "tag" : "IN",
+      "text" : "in"
+    }, {
+      "idx" : 357,
+      "pos" : "PROPN",
+      "t_idx" : 41,
+      "tag" : "NNP",
+      "text" : "the United States Senate"
+    }, {
+      "idx" : 382,
+      "pos" : "SCONJ",
+      "t_idx" : 42,
+      "tag" : "WRB",
+      "text" : "where"
+    }, {
+      "idx" : 388,
+      "pos" : "PROPN",
+      "t_idx" : 43,
+      "tag" : "NNP",
+      "text" : "Meera Chandra"
+    }, {
+      "idx" : 402,
+      "lemma" : "advise",
+      "pos" : "VERB",
+      "t_idx" : 44,
+      "tag" : "VBD",
+      "text" : "advised"
+    }, {
+      "idx" : 410,
+      "pos" : "ADP",
+      "t_idx" : 45,
+      "tag" : "IN",
+      "text" : "on"
+    }, {
+      "idx" : 413,
+      "pos" : "NOUN",
+      "t_idx" : 46,
+      "tag" : "NN",
+      "text" : "agriculture"
+    }, {
+      "idx" : 425,
+      "pos" : "CCONJ",
+      "t_idx" : 47,
+      "tag" : "CC",
+      "text" : "and"
+    }, {
+      "idx" : 429,
+      "pos" : "NOUN",
+      "t_idx" : 48,
+      "tag" : "NN",
+      "text" : "public health policy"
+    }, {
+      "idx" : 449,
+      "pos" : "PUNCT",
+      "t_idx" : 49,
+      "tag" : ".",
+      "text" : "."
+    } ]
+  }
