@@ -1,4 +1,5 @@
 [{"pattern": "is-0",
+  "example": "Dr. Meera Chandra is a Food Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID.",
   "rdf": [{
       "subject": {"ref": 0},
       "predicate": {"value": "is"},
@@ -43,7 +44,8 @@
   "words": [{"pos":  "PROPN", "tag": "NNP"},
             {"tag" : "VBD"},
             {"pos": ["PROPN","NOUN"]}]},
- {"pattern": "was-1",
+ {"pattern": "action-0",
+  "example": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
   "rdf": [{"subject": {"ref": 0},
            "predicate": {"ref": 1, "use": ["lemma","text"], "stop_at": 1},
            "object": {"ref": 3, "stop_at": ["relcl"]},
@@ -68,7 +70,7 @@
       }
   ],
   "words": [{"pos":  "PROPN", "tag": "NNP"},
-            {"tag" : "VBD"},
+            {"pos": "VERB", "tag" : ["VBN","VBD"]},
             {"pos": "ADP"},
             {"pos": ["PROPN","NOUN"]}]}
 ]

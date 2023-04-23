@@ -165,6 +165,7 @@ class SubgraphIsomorphismResource(object):
         
     def on_post(self, req, resp):
         logging.debug("Matching graphs")
+        SubgraphIsomorphismResource.init_subgraphs()
         req_body = req.bounded_stream.read()
         graph_data = json.loads(req_body.decode('utf8'))
 
