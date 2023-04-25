@@ -24,6 +24,7 @@
       {"pos": ["PROPN","NOUN"]}]
  },
  {"pattern": "was-0",
+  "logging" : "debug",
   "rdf": [{"subject": {"ref": 0},
            "predicate": {"ref": 1, "use": ["lemma","text"]},
            "object": {"ref": 2},
@@ -45,9 +46,10 @@
             {"tag" : "VBD"},
             {"pos": ["PROPN","NOUN"]}]},
  {"pattern": "action-0",
+  "logging" : "debug",
   "example": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
   "rdf": [{"subject": {"ref": 0},
-           "predicate": {"ref": 1, "use": ["lemma","text"], "stop_at": 1},
+           "predicate": {"template": "$1 $2", "use": ["lemma","text"]},
            "object": {"ref": 3, "stop_at": ["relcl"]},
            "context": {"value": "past"}}],
   "arcs": [
@@ -71,6 +73,35 @@
   ],
   "words": [{"pos":  "PROPN", "tag": "NNP"},
             {"pos": "VERB", "tag" : ["VBN","VBD"]},
-            {"pos": "ADP"},
+            {"pos": "ADP", "text": ["as", "in", "on", "with"]},
+            {"pos": ["PROPN","NOUN"]}]},
+ {"pattern": "action-1",
+  "example": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
+  "rdf": [{"subject": {"ref": 0},
+           "predicate": {"template": "$1 $2", "use": ["lemma","text"]},
+           "object": {"ref": 3, "stop_at": ["relcl"]},
+           "context": {"value": "past"}}],
+  "arcs": [
+      {
+          "dir": "left",
+          "label": "nsubj",
+          "start": 0,
+          "end": 1
+      },
+      {
+          "dir": "right",
+          "label": "prep",
+          "start": 1,
+          "end": 2
+      },
+      { "dir": "right",
+        "label": "pobj",
+        "start": 2,
+        "end": 3
+      }
+  ],
+  "words": [{"pos":  "PROPN", "tag": "NNP"},
+            {"pos": "VERB", "tag" : ["VBN","VBD"]},
+            {"pos": "ADP", "text": ["as", "in", "on", "with"]},
             {"pos": ["PROPN","NOUN"]}]}
 ]

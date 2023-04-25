@@ -167,7 +167,7 @@ class EntResource(object):
         collapse_phrases = json_data.get('collapse_phrases', False)
         resolve_corefs = json_data.get('resolve_corefs', False)
 
-        logger.info(f"entity request, resolve_corefs={resolve_corefs}")
+        logger.info(f"entity request, model={model_name}, collapse_phrases={collapse_phrases}, resolve_corefs={resolve_corefs}")
 
         try:
             model = get_model(model_name)
