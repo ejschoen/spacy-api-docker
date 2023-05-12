@@ -1,0 +1,84 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: spacy-api-docker
+  labels:
+    visualize: "true"
+spec:
+  selector:
+    matchLabels:
+      app: spacy-api-docker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: spacy-api-docker
+    spec:
+      hostname: spacy-api-docker
+      containers:
+        - name: spacy-api-docker
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 1
+              memory: 7Gi
+          image: 192.168.0.200:5000/jgontrum/spacy-api-docker:3.4-base
+          workingDir: /app
+          command: ["env/bin/run_server"]
+          volumeMounts:
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_lg
+              subPath: ./kb/spacy/en_core_web_lg
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_sm
+              subPath: ./kb/spacy/en_core_web_sm
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_trf
+              subPath: ./kb/spacy/en_core_web_trf
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_coreference_web_trf
+              subPath: ./kb/spacy/en_coreference_web_trf
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_lg-3.4.1.dist-info
+              subPath: ./kb/spacy/en_core_web_lg-3.4.1.dist-info
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_sm-3.4.1.dist-info
+              subPath: ./kb/spacy/en_core_web_sm-3.4.1.dist-info
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_core_web_trf-3.4.1.dist-info
+              subPath: ./kb/spacy/en_core_web_trf-3.4.1.dist-info
+              readOnly: true
+            - name: i2kcfg
+              mountPath: /app/env/lib/python3.9/site-packages/en_coreference_web_trf-3.4.0a2.dist-info
+              subPath: ./kb/spacy/en_coreference_web_trf-3.4.0a2.dist-info
+              readOnly: true
+      volumes:        
+        - name: i2kcfg
+          nfs:
+            path: /data/i2kdevops/minikube/i2kconnect
+            readOnly: true
+            server: 192.168.0.200
+---
+# spacy-api-docker service
+kind: Service
+apiVersion: v1
+metadata:
+  name: spacy-api-docker
+  labels:
+    visualize: "true"
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      name: spacy-api-docker-port
+  selector:
+    app: spacy-api-docker
