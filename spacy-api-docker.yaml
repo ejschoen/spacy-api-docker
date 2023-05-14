@@ -22,7 +22,7 @@ spec:
           resources:
             requests:
               cpu: 1
-              memory: 7Gi
+              memory: 2Gi
           image: 192.168.0.200:5000/jgontrum/spacy-api-docker:3.4-base
           workingDir: /app
           command: ["env/bin/run_server"]

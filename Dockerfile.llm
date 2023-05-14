@@ -25,14 +25,13 @@ RUN bash /app/build_sassc.sh
 
 # Build app
 RUN cd /app/frontend && make clean && make
-RUN cd /app && make clean && make
+RUN cd /app && make -f Makefile.llm clean && make -f Makefile.llm
+
 
 FROM python:3.9
 LABEL maintainer="gontrum@me.com and ejschoen@i2kconnect.com"
 LABEL version="0.3"
 LABEL description="Base image, containing no language models."
-ARG BRANCH=unspecified
-LABEL branch=$BRANCH
 
 # Install the required packages
 RUN apt-get update && apt-get install -y \
