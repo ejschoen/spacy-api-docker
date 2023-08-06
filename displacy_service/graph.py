@@ -35,11 +35,12 @@ class GraphTestResource(object):
         resp.status = falcon.HTTP_200
 
 class SubgraphIsomorphismResource(object):
+    regex_pattern = re.compile("/.+/")
     subgraphs = []
     subgraph_fingerprint = None
     logger = logging.getLogger("SubgraphIsomorphismResource")
     logger.debug("subgraph isomorphism resource logging initialized")
-
+    logger.level = logging.DEBUG
     def __init__(self):
         SubgraphIsomorphismResource.init_subgraphs()
 
@@ -54,7 +55,7 @@ class SubgraphIsomorphismResource(object):
         
     @staticmethod
     def make_graph(data):
-        graph = nx.DiGraph(rdf=data.get("rdf", None), pattern=data.get("pattern", None))
+        graph = nx.DiGraph(rdf=data.get("rdf", None), pattern=data.get("pattern", None), logging=data.get("logging", logging.INFO))
         edges = data["arcs"]
         nodes = data["words"]
         node_offset = 0
@@ -64,21 +65,32 @@ class SubgraphIsomorphismResource(object):
             graph.add_node(node_index, **node)
         for edge in edges:
             if edge["dir"] == "left":
-                graph.add_edge(edge["end"]-node_offset, edge["start"]-node_offset, label=edge["label"])
+                graph.add_edge(edge["end"]-node_offset, edge["start"]-node_offset, label=edge["label"],
+                               dir=edge["dir"], start=edge["start"], end=edge["end"])
             else:
-                graph.add_edge(edge["start"]-node_offset, edge["end"]-node_offset, label=edge["label"])
+                graph.add_edge(edge["start"]-node_offset, edge["end"]-node_offset, label=edge["label"],
+                               dir=edge["dir"], start=edge["start"], end=edge["end"])
         return(graph)
 
     @staticmethod
     def node_matcher(n1, n2):
         match = False
         if "pos" in n1 and "pos" in n2 and "tag" in n1 and "tag" in n2:
+            pmatch = False
+            tmatch = False
             pos1 = n1["pos"]
             pos2 = n2["pos"]
             if isinstance(pos2,str):
-                match = pos1 == pos2
+                pmatch = pos1 == pos2
             else:
-                match = pos1 in pos2
+                pmatch = pos1 in pos2
+            tag1 = n1["tag"]
+            tag2 = n2["tag"]
+            if isinstance(tag2, str):
+                tmatch = tag1 == tag2
+            else:
+                tmatch = tag1 in tag2
+            match = tmatch and pmatch
         elif "pos" in n1 and "pos" in n2:
             pos1 = n1["pos"]
             pos2 = n2["pos"]
@@ -97,7 +109,10 @@ class SubgraphIsomorphismResource(object):
         if match:
             if n2.get("text") is not None:
                 if isinstance(n2.get("text"),str):
-                    match = n1.get("text") == n2.get("text")
+                    if SubgraphIsomorphismResource.regex_pattern.match(n2.get("text")) is not None:
+                        match = re.match(n2.get("text")[1:-1], n1.get("text")) is not None
+                    else:
+                        match = n1.get("text") == n2.get("text")
                 else:
                     match = n1.get("text") in n2.get("text")
                 SubgraphIsomorphismResource.logger.debug(f"Template has text constraint {n2.get('text')}.  After text match, node match {n1} === {n2} => {match}")
@@ -110,15 +125,20 @@ class SubgraphIsomorphismResource(object):
         return match
 
     @staticmethod
-    def subtree_to_text(graph, start_node, use=["text"], stop_at=None, stop_after=None):
+    def subtree_to_text(graph, start_node, use=["text"], stop_before=None, stop_at=None):
+        stop = None
+        if stop_before is not None:
+            stop = stop_before
+        elif stop_at is not None:
+            stop = stop_at
         left_labels = ["amod", "nmod", "compound"]
         def stop_predicate(nbr_edge):
             nbr = nbr_edge[0]
             edge = nbr_edge[1]
-            if isinstance(stop_at,list):
-                return edge["label"] in stop_at
-            elif isinstance(stop_at,int):
-                return nbr > stop_at
+            if isinstance(stop,list):
+                return edge["label"] in stop
+            elif isinstance(stop,int):
+                return nbr > stop
             else:
               return False
         SubgraphIsomorphismResource.logger.debug(f"subtree_to_text: start_node={start_node}")
@@ -129,10 +149,12 @@ class SubgraphIsomorphismResource(object):
             return node_text
         else:
             before_nodes = list([nbr for nbr, edge in outs.items() if nbr < start_node and edge["label"] in left_labels])
-            after_nodes = takewhile(lambda nbr_edge: not(stop_predicate(nbr_edge)),
-                                    [(nbr,edge) for nbr, edge in outs.items() if nbr > start_node])
+            after_nodes = list(takewhile(lambda nbr_edge: not(stop_predicate(nbr_edge)),
+                                         [(nbr,edge) for nbr, edge in outs.items() if nbr > start_node]))
+            if stop_before is not None and len(after_nodes)>0:
+                after_nodes = after_nodes[:-1]
             befores = " ".join([graph.nodes[nbr]["text"] for nbr in before_nodes])
-            afters = " ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at)
+            afters = " ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at, stop_before=stop_before)
                                for nbr, edge in after_nodes])
             return befores + " " + node_text + " " + afters
         
@@ -167,13 +189,19 @@ class SubgraphIsomorphismResource(object):
                 subgraph_node = rdf_part["ref"]
                 graph_node = match[subgraph_node]
                 stop_at = rdf_part.get("stop_at", None)
+                stop_before = rdf_part.get("stop_before", None)
                 if isinstance(stop_at, int):
                     stop_at = stop_at - subgraph_node + graph_node + 1
+                if isinstance(stop_before, int):
+                    stop_at = stop_before - subgraph_node + graph_node + 1
                 value = SubgraphIsomorphismResource.subtree_to_text(graph, graph_node,
                                                                     use=rdf_part.get("use", ["text"]),
+                                                                    stop_before=stop_before,
                                                                     stop_at=stop_at)
                 if stop_at is not None:
                     SubgraphIsomorphismResource.logger.debug(f"get_rdf_value: {subgraph_node}-{rdf_part.get('stop_at')} => {graph_node}-{stop_at}: {value}")
+                elif stop_before is not None:
+                    SubgraphIsomorphismResource.logger.debug(f"get_rdf_value: {subgraph_node}-{rdf_part.get('stop_before')} => {graph_node}-{stop_before}: {value}")
                 else:
                     SubgraphIsomorphismResource.logger.debug(f"get_rdf_value: {subgraph_node}-* => {graph_node}-*: {value}")
             return value
@@ -188,7 +216,7 @@ class SubgraphIsomorphismResource(object):
     
     @staticmethod
     def match_graph(subgraph, graph):
-        SubgraphIsomorphismResource.logger.setLevel(subgraph.graph.get('logging', logging.INFO))
+        SubgraphIsomorphismResource.logger.setLevel(subgraph.graph['logging'])
         SubgraphIsomorphismResource.logger.debug(f"Trying {subgraph.graph['pattern']}")
         matcher = DiGraphMatcher(graph, subgraph,
                                  node_match=SubgraphIsomorphismResource.node_matcher,
@@ -203,14 +231,14 @@ class SubgraphIsomorphismResource(object):
             return None
         
     def on_post(self, req, resp):
-        SubgraphIsomorphismResource.logger.debug("Matching graphs")
+        SubgraphIsomorphismResource.logger.info("Matching graphs")
         SubgraphIsomorphismResource.init_subgraphs()
         req_body = req.bounded_stream.read()
         graph_data = json.loads(req_body.decode('utf8'))
 
         graph = SubgraphIsomorphismResource.make_graph(graph_data)
-        result = [SubgraphIsomorphismResource.match_graph(subgraph, graph) for subgraph in
-                  SubgraphIsomorphismResource.subgraphs]
+        result = list([SubgraphIsomorphismResource.match_graph(subgraph, graph) for subgraph in
+                  SubgraphIsomorphismResource.subgraphs])
 
         resp.content_type = "application/json"
         resp.status = falcon.HTTP_200

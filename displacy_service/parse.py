@@ -85,11 +85,11 @@ class Entities(object):
                         if len(ents)==1:
                             if np.end - np.start > 1:
                                 if np.start==ents[0].start and np.end==ents[0].end:
-                                    logger.info(f"Merging {np}")
+                                    logger.debug(f"Merging {np}")
                                     retokenizer.merge(np, {"_": {"original_tokens": list([c.text for c in np])}})
                                 else:
                                     if ents[0].end-ents[0].start > 1:
-                                        logging.info(f"Merging entity {ents[0]} inside noun chunk {np}")
+                                        logging.debug(f"Merging entity {ents[0]} inside noun chunk {np}")
                                         retokenizer.merge(ents[0]
                                                           #, {"_", {"original_tokens": list([c.text for c in ents[0]])}}
                                                           )
@@ -99,9 +99,9 @@ class Entities(object):
                 self.resolve_corefs = resolve_corefs
                 coreferee = CorefereeBroker(nlp, "")
                 coreferee(self.doc)
-                logger.info(f"From Coreferee coreference chains: {self.doc._.coref_chains.pretty_representation}")
+                logger.debug(f"From Coreferee coreference chains: {self.doc._.coref_chains.pretty_representation}")
         self.unified_entities = {}
-        logger.info(f"Created Entities object with resolve_corefs={resolve_corefs}, unify_entities={unify_entities}, collapse_phrases={collapse_phrases}")
+        logger.debug(f"Created Entities object with resolve_corefs={resolve_corefs}, unify_entities={unify_entities}, collapse_phrases={collapse_phrases}")
 
     def is_clusterable_entity(self, ent):
         type = ent.label_
@@ -174,7 +174,7 @@ class Entities(object):
             for tok in entity:
                 token_text = tok.text
                 token_index = tok.idx
-                logger.info(f"entity token: {token_text}")
+                logger.debug(f"entity token: {token_text}")
                 if token_text in tokens_to_entities:
                     if all(t in tokens_to_entities for t in self.entity_words(entity)):
                         entity0 = tokens_to_entities[token_text][0]
@@ -185,11 +185,11 @@ class Entities(object):
                                 entity_list.append(entity)
                                 logger.debug(f"Adding {str(entity)} to entity list for token {token_text}")
                     else:
-                        logger.info(f"Dropped {token_text} because not all of {self.entity_words(entity)} in tokens_to_entities")
+                        logger.debug(f"Dropped {token_text} because not all of {self.entity_words(entity)} in tokens_to_entities")
                 else:
                     #print(f"New token? {token_text} => {self.entity_words(entity)}, size {entity.end-entity.start}")
                     for tok1 in self.entity_words(entity):
-                        logger.info(f"Adding {tok1} for entity {entity}")
+                        logger.debug(f"Adding {tok1} for entity {entity}")
                         tokens_to_entities[tok1] = entity_crossreference[entity]
         entity_map={}
         for entity,entities in entity_crossreference.items():

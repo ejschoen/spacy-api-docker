@@ -1,5 +1,91 @@
-[{"pattern": "is-0",
-  "example": "Dr. Meera Chandra is a Food Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID.",
+[{"logging": 10,
+  "pattern": "possessive-0",
+  "words": [
+      {"pos": ["NOUN","PROPN"], "tag": ["NN","NNP"], "text": "/Org\\d+/"},
+      {"pos": "PART", "tag": "POS"},
+      {"pos": "NOUN", "tag": "NN"},
+      {"pos": "PUNCT", "tag": ","},
+      {"pos": "PROPN", "tag": "NNP", "text": "/Person\\d+/"},
+      {"pos": "PUNCT", "tag": ","}],
+  "arcs": [
+      {"dir": "left", "label": "poss", "start": 0, "end": 2},
+      {"dir": "right", "label": "case", "start": 0, "end": 1},
+      {"dir": "right", "label": "punct", "start": 2, "end": 3},
+      {"dir": "right", "label": "appos", "start": 2, "end": 4},
+      {"dir": "right", "label": "punct", "start": 2, "end": 5}],
+  "rdf": [
+      {"subject": {"ref": 4},
+       "predicate": {"template": "is-$2", "stop_before": ["punct"]},
+       "object": {"ref": 0, "stop_before": ["punct"]},
+       "context": "present"},
+      {"subject": {"ref": 4},
+       "predicate": {"template": "member-of", "stop_before": ["punct"]},
+       "object": {"ref": 0, "stop_before": ["punct"]},
+       "context": "present"}
+  ],
+  "example": {"text":"Catalight, the nonprofit behavioral health care organization, announced today that the Catalight's CEO, Susan Armiger, has been named to the 2023 Forbes 50 Over 50 List.",
+              "rdf": [{"subject": "Susan Armiger",
+                       "predicate": "CEO",
+                       "object": "Catalight",
+                       "context": "present"}]}
+},
+ {"pattern": "parenthetical-0",
+  "words": [
+      {"pos": "PROPN", "tag":"NNP"},
+      {"pos": "PUNCT", "tag": "-LRB-"},
+      {"pos": ["NOUN","PROPN"], "tag": ["NN", "NNP"]},
+      {"pos": ["NOUN","PROPN"], "tag": ["NN", "NNP"], "text": "/Org\\d+/"}
+  ],
+  "arcs": [
+      {"dir": "right", "label": "punct", "start": 0, "end": 1},
+      {"dir": "right", "label": "appos", "start": 0, "end": 2},
+      {"dir": "right", "label": "appos", "start": 2, "end": 3}
+  ],
+  "rdf": [
+      {"subject": {"ref": 0, "stop_before": ["punct"]},
+       "predicate": {"value": "is"},
+       "object" : {"ref": 2, "stop_before": ["punct"]},
+       "context": {"value": "present"}},
+      {"subject": {"ref": 0, "stop_before": ["punct"]},
+       "predicate" : {"value": "member-of"},
+       "object" : {"ref": 3},
+       "context": {"value": "present"}}
+  ],
+  "example": {"text": "Micah R. Fisher (Research Fellow, EWC)",
+              "rdf": [{"subject": "Micah R. Fisher",
+                       "predicate": "is",
+                       "object": "Research Fellow",
+                       "context": "present"},
+                      {"subject": "Micah R. Fisher",
+                       "predicate": "member-of",
+                       "object": "EWC",
+                       "context": "present"}]}
+ },
+ {"pattern": "is-in-0",
+  "words": [
+      {"pos": "NOUN", "tag": "NN"},
+      {"pos": "AUX", "tag": "VBZ", "text": "is", "lemma": "be"},
+      {"pos": "ADP", "tag": "IN"},
+      {"pos": "PROPN", "tag": "NNP"}
+  ],
+  "arcs": [
+      {"dir": "left", "label": "nsubj", "start": 0, "end": 1},
+      {"dir": "right", "label": "prep", "start": 1, "end": 2},
+      {"dir": "right", "label": "pobj", "start": 2, "end": 3}
+  ],
+  "rdf": [
+      {"subject": {"ref": 0},
+       "predicate": {"value": "member-of"},
+       "object": {"ref": 3},
+       "context": {"value": "present"}}
+  ],
+  "example": {"text": "Brandy M. Toner is in the Department of Soil, Water, and Climate, University of Minnesota, St Paul, Minnesota 55108, USA.",
+              "rdf": [{"subject": "Brandy M. Toner",
+                       "predicate": "member-of",
+                       "object": "the Department of Soil, Water, and Climate , University of Minnesota , St Paul , University of Minnesota 55108 , USA",
+                       "context": "present"}]}
+ },
+ {"pattern": "is-0",
   "rdf": [{
       "subject": {"ref": 0},
       "predicate": {"value": "is"},
@@ -21,10 +107,14 @@
   "words": [
       {"pos":  "PROPN", "tag": "NNP"},
       {"pos" : "AUX", "tag" : "VBZ", "lemma": "be","text" : "is"},
-      {"pos": ["PROPN","NOUN"]}]
+      {"pos": ["PROPN","NOUN"]}],
+  "example": {"text": "Dr. Meera Chandra is a Food Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID.",
+              "rdf": [{"subject": "Dr. Meera Chandra",
+                       "predicate": "is",
+                       "object": "Safety Advisor with the Food Safety Division in the Center for Nutrition at USAID",
+                       "context": "present"}]}
  },
  {"pattern": "was-0",
-  "logging" : "debug",
   "rdf": [{"subject": {"ref": 0},
            "predicate": {"ref": 1, "use": ["lemma","text"]},
            "object": {"ref": 2},
@@ -46,8 +136,6 @@
             {"tag" : "VBD"},
             {"pos": ["PROPN","NOUN"]}]},
  {"pattern": "action-0",
-  "logging" : "debug",
-  "example": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
   "rdf": [{"subject": {"ref": 0},
            "predicate": {"template": "$1 $2", "use": ["lemma","text"]},
            "object": {"ref": 3, "stop_at": ["relcl"]},
@@ -74,9 +162,17 @@
   "words": [{"pos":  "PROPN", "tag": "NNP"},
             {"pos": "VERB", "tag" : ["VBN","VBD"]},
             {"pos": "ADP", "text": ["as", "in", "on", "with"]},
-            {"pos": ["PROPN","NOUN"]}]},
+            {"pos": ["PROPN","NOUN"]}],
+  "example": {"text": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
+              "rdf": [{"subject": "Meera Chandra",
+                       "predicate": "work with",
+                       "object": "the World Customs of Animal Health",
+                       "context": "past"},
+                      {"subject": "Meera Chandra",
+                       "predicate": "work in",
+                       "object": "Paris",
+                       "context": "past"}]}},
  {"pattern": "action-1",
-  "example": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
   "rdf": [{"subject": {"ref": 0},
            "predicate": {"template": "$1 $2", "use": ["lemma","text"]},
            "object": {"ref": 3, "stop_at": ["relcl"]},
@@ -103,5 +199,14 @@
   "words": [{"pos":  "PROPN", "tag": "NNP"},
             {"pos": "VERB", "tag" : ["VBN","VBD"]},
             {"pos": "ADP", "text": ["as", "in", "on", "with"]},
-            {"pos": ["PROPN","NOUN"]}]}
+            {"pos": ["PROPN","NOUN"]}],
+ "example": {"text": "Meera Chandra has also worked with the World Customs of Animal Health in Paris where Meera Chandra analyzed risk factors and response efforts to outbreaks of Foot and Mouth Disease in food animals.",
+             "rdf": [{"subject": "Meera Chandra",
+                      "predicate": "work with",
+                      "object": "the World Customs of Animal Health",
+                      "context": "past"},
+                     {"subject": "Meera Chandra",
+                      "predicate": "work in",
+                      "object": "Paris",
+                      "context": "past"}]}}
 ]

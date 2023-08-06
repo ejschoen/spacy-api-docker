@@ -4,10 +4,12 @@
 .DS_STORE
 *.md
 env
+llm
 .idea
 *.egg-info
 !README.md
 coverage.xml
 .coverage
 frontend/node_modules
+./subgraphs.json
 .venv
