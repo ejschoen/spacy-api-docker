@@ -1,5 +1,4 @@
-[{"logging": 10,
-  "pattern": "possessive-0",
+[{"pattern": "possessive-0",
   "words": [
       {"pos": ["NOUN","PROPN"], "tag": ["NN","NNP"], "text": "/Org\\d+/"},
       {"pos": "PART", "tag": "POS"},
@@ -23,13 +22,18 @@
        "object": {"ref": 0, "stop_before": ["punct"]},
        "context": "present"}
   ],
-  "example": {"text":"Catalight, the nonprofit behavioral health care organization, announced today that the Catalight's CEO, Susan Armiger, has been named to the 2023 Forbes 50 Over 50 List.",
+  "example": {"text":"Catalight, the nonprofit behavioral health care organization, announced today that the company's CEO, Susan Armiger, has been named to the 2023 Forbes 50 Over 50 List.",
               "rdf": [{"subject": "Susan Armiger",
-                       "predicate": "CEO",
+                       "predicate": "is-CEO",
+                       "object": "Catalight",
+                       "context": "present"},
+                      {"subject": "Susan Armiger",
+                       "predicate": "member-of",
                        "object": "Catalight",
                        "context": "present"}]}
 },
  {"pattern": "parenthetical-0",
+  "logging": 10,
   "words": [
       {"pos": "PROPN", "tag":"NNP"},
       {"pos": "PUNCT", "tag": "-LRB-"},
@@ -39,7 +43,7 @@
   "arcs": [
       {"dir": "right", "label": "punct", "start": 0, "end": 1},
       {"dir": "right", "label": "appos", "start": 0, "end": 2},
-      {"dir": "right", "label": "appos", "start": 2, "end": 3}
+      {"dir": "right", "label": "appos", "start": 0, "end": 3}
   ],
   "rdf": [
       {"subject": {"ref": 0, "stop_before": ["punct"]},

@@ -179,12 +179,14 @@ class SubgraphIsomorphismResource(object):
     @staticmethod
     def get_rdf_value(rdf_part, match, graph):
         if "value" in rdf_part:
-            return rdf_part["value"]
+            return re.sub(r'\s+', ' ', rdf_part["value"].strip())
         elif "ref" in rdf_part or "template" in rdf_part:
             if rdf_part.get("template") is not None:
                 value = SubgraphIsomorphismResource.instantiate_template(rdf_part.get("template"),
                                                                          rdf_part.get("use", ["text"]),
                                                                          graph, match)
+                if value is not None:
+                    value = re.sub(r'\s+', ' ', value.strip())
             else:
                 subgraph_node = rdf_part["ref"]
                 graph_node = match[subgraph_node]
@@ -204,7 +206,11 @@ class SubgraphIsomorphismResource(object):
                     SubgraphIsomorphismResource.logger.debug(f"get_rdf_value: {subgraph_node}-{rdf_part.get('stop_before')} => {graph_node}-{stop_before}: {value}")
                 else:
                     SubgraphIsomorphismResource.logger.debug(f"get_rdf_value: {subgraph_node}-* => {graph_node}-*: {value}")
+                if value is not None:
+                    value = re.sub(r'\s+', ' ', value.strip())
             return value
+        elif isinstance(rdf_part, str):
+            return re.sub(r'\s+', ' ', rdf_part.strip())
         
     @staticmethod
     def get_rdf(match, subgraph, graph):
