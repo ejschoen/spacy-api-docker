@@ -125,6 +125,10 @@ class SubgraphIsomorphismResource(object):
         return match
 
     @staticmethod
+    def fixup_token_joins(text):
+        return re.sub(r"\( ", "(", re.sub(r" \)", ")", re.sub(r" ([.,;'])", r'\1',text)))
+
+    @staticmethod
     def subtree_to_text(graph, start_node, use=["text"], stop_before=None, stop_at=None):
         stop = None
         if stop_before is not None:
@@ -153,9 +157,9 @@ class SubgraphIsomorphismResource(object):
                                          [(nbr,edge) for nbr, edge in outs.items() if nbr > start_node]))
             if stop_before is not None and len(after_nodes)>0:
                 after_nodes = after_nodes[:-1]
-            befores = re.sub(r" ([.,;'])", r'\1', " ".join([graph.nodes[nbr]["text"] for nbr in before_nodes]))
-            afters = re.sub(r" ([.,;'])", r'\1', " ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at, stop_before=stop_before)
-                               for nbr, edge in after_nodes]))
+            befores = SubgraphIsomorphismResource.fixup_token_joins(" ".join([graph.nodes[nbr]["text"] for nbr in before_nodes]))
+            afters = SubgraphIsomorphismResource.fixup_token_joins(" ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at, stop_before=stop_before)
+                                                for nbr, edge in after_nodes]))
             return befores + " " + node_text + " " + afters
         
     @staticmethod
