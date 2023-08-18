@@ -90,9 +90,10 @@ class Entities(object):
                                 else:
                                     if ents[0].end-ents[0].start > 1:
                                         logging.debug(f"Merging entity {ents[0]} inside noun chunk {np}")
-                                        retokenizer.merge(ents[0]
-                                                          #, {"_", {"original_tokens": list([c.text for c in ents[0]])}}
-                                                          )
+                                        original_tokens = list([c.text for c in self.doc[ents[0].start:ents[0].end]])
+                                        underscore_map = {"original_tokens": original_tokens}
+                                        attributes = {"_": underscore_map}
+                                        retokenizer.merge(ents[0], attributes)
                         else:
                             logger.debug(f"Not merging multi-entity noun chunk {np}")
             if resolve_corefs:
@@ -157,6 +158,9 @@ class Entities(object):
         else:
             return [token.text for token in entity]
     
+    def matching_entity_type_filter(self, entity):
+        return entity.label_ == "PERSON"
+
     ''' Having seen Jane Smith as a mult-token entity previously, presume that
         an entity with the name Jane or the name Smith refers to the same
         entity. (Jane Smith becomes the antecedant of the entities Jane and Smith.)
@@ -166,7 +170,7 @@ class Entities(object):
     def find_matching_entities(self):
         tokens_to_entities = {}
         entity_crossreference = {}
-        for entity in self.doc.ents:
+        for entity in filter(lambda e:self.matching_entity_type_filter(e), self.doc.ents):
             if entity not in entity_crossreference:
                 entity_crossreference[entity] = [entity]
             entity_text = entity.text
@@ -191,11 +195,14 @@ class Entities(object):
                     for tok1 in self.entity_words(entity):
                         logger.debug(f"Adding {tok1} for entity {entity}")
                         tokens_to_entities[tok1] = entity_crossreference[entity]
+        logger.info(f"Tokens to entities:: {tokens_to_entities}")
+        logger.info(f"Entity cross-reference: {entity_crossreference}")
         entity_map={}
         for entity,entities in entity_crossreference.items():
             if len(entities)>1:
                 for e in entities[1:]:
                     entity_map[e] = entity
+        logger.info(f"Entity map: {entity_map}")
         return entity_map
         
 

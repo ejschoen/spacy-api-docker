@@ -153,9 +153,9 @@ class SubgraphIsomorphismResource(object):
                                          [(nbr,edge) for nbr, edge in outs.items() if nbr > start_node]))
             if stop_before is not None and len(after_nodes)>0:
                 after_nodes = after_nodes[:-1]
-            befores = " ".join([graph.nodes[nbr]["text"] for nbr in before_nodes])
-            afters = " ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at, stop_before=stop_before)
-                               for nbr, edge in after_nodes])
+            befores = re.sub(r" ([.,;'])", r'\1', " ".join([graph.nodes[nbr]["text"] for nbr in before_nodes]))
+            afters = re.sub(r" ([.,;'])", r'\1', " ".join([SubgraphIsomorphismResource.subtree_to_text(graph, nbr, use=use, stop_at=stop_at, stop_before=stop_before)
+                               for nbr, edge in after_nodes]))
             return befores + " " + node_text + " " + afters
         
     @staticmethod
