@@ -131,7 +131,7 @@ class SubgraphIsomorphismResource(object):
             stop = stop_before
         elif stop_at is not None:
             stop = stop_at
-        left_labels = ["amod", "nmod", "compound"]
+        left_labels = ["amod", "nmod", "compound", "det"]
         def stop_predicate(nbr_edge):
             nbr = nbr_edge[0]
             edge = nbr_edge[1]
