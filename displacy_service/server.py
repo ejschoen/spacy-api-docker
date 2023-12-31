@@ -36,6 +36,7 @@ def init_logging():
 def get_model(model_name):
     if model_name not in _models:
         model = spacy.load(model_name)
+        model.max_length = 3000000
         _models[model_name] = model
     return _models[model_name]
 
