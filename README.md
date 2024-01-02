@@ -668,3 +668,6 @@ Example response:
   "spacy": "2.2.4"
 }
 ```
+Other models:
+>>> nlp=spacy.blank("en")
+>>> nlp.add_pipe("hf_token_pipe", config={"model": "xlm-roberta-large-finetuned-conll03-english"})
